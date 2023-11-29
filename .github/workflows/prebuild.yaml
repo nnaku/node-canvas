@@ -26,7 +26,7 @@ jobs:
       matrix:
         node: [18.18]
         canvas_tag: [master] # e.g. "v2.6.1"
-        arch: ['x64', 'arm64']
+        arch: ['universal']
     name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, macOS ${{ matrix.arch }}
     runs-on: macos-latest
     env:

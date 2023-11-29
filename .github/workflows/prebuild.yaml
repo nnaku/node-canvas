@@ -25,9 +25,9 @@ jobs:
     strategy:
       matrix:
         node: [18.18]
-        canvas_tag: [38e0a32] # e.g. "v2.6.1"
+        canvas_tag: [master] # e.g. "v2.6.1"
         arch: ['x64', 'arm64']
-    name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, macOS
+    name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, macOS ${{ matrix.arch }}
     runs-on: macos-latest
     env:
       CANVAS_VERSION_TO_BUILD: ${{ matrix.canvas_tag }}

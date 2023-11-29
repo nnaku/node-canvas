@@ -24,8 +24,9 @@ jobs:
   macOS:
     strategy:
       matrix:
-        node: [18.12.0, 20.9.0]
-        canvas_tag: [master] # e.g. "v2.6.1"
+        node: [18.18]
+        canvas_tag: [38e0a32] # e.g. "v2.6.1"
+        arch: ['x64', 'arm64']
     name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, macOS
     runs-on: macos-latest
     env:
@@ -45,7 +46,7 @@ jobs:
           npm install --ignore-scripts
           . prebuild/macOS/preinstall.sh
           cp prebuild/macOS/binding.gyp binding.gyp
-          node-gyp rebuild -j 2 --arch universal
+          node-gyp rebuild -j 2 --arch ${{ matrix.arch }}
           . prebuild/macOS/bundle.sh
 
       - name: Test binary
